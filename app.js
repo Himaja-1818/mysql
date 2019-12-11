@@ -9,6 +9,7 @@ var logger = require('morgan');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 
+const recordRouter = require('./routes/record');
 const recordsRouter = require('./routes/records');
 
 const records1Router = require('./routes/records1');
@@ -18,6 +19,10 @@ const records2Router = require('./routes/records2');
 const records3Router = require('./routes/records3');
 
 const records4Router = require('./routes/records4');
+
+const records5Router = require('./routes/records5');
+
+const records6Router = require('./routes/records6');
 var app = express();
 
 // view engine setup
@@ -36,6 +41,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
+app.get('/record', recordRouter);
 app.get('/records', recordsRouter);
 
 app.get('/records1', records1Router);
@@ -45,6 +51,10 @@ app.get('/records2', records2Router);
 app.get('/records3', records3Router);
 
 app.get('/records4', records4Router);
+
+app.post('/records5', records5Router);
+
+app.post('/records6', records6Router);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

@@ -1,0 +1,25 @@
+
+<%- include('header') %>
+
+<p>welcome to mysql</p>
+
+<!--<form action="/submitDetails" method="post"> -->
+    <form name = 'mysql' action="records5" method="POST"> 
+    <h1> Signup form </h1> 
+                      
+    <input class="box" type="text" name="name" id="name" 
+    placeholder="Name"  required /><br> 
+                      
+    <input class="box" type="text" name="age" id="age" 
+    placeholder="age " required /><br> 
+                      
+    <input class="box" type="text" name="gender" 
+    id="gender" placeholder="gender " required/><br> 
+                      
+    <input class="box" type="text" name="city" id="city"  
+    placeholder="city " required/><br> 
+                <br> 
+               
+         <button type="submit">submit</button>     
+    </form>
+<%- include('footer') %>

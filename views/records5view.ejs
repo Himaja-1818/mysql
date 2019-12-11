@@ -1,0 +1,41 @@
+
+<%- include('header') %>
+<p>welcome to mysql</p>
+
+    
+<a href="/getDetails">Add New Record</a>
+<div style="overflow-x:auto;">
+        <table width="1300" border="6">
+        <tr>
+            <th style="color:cyan">name</th>
+            <th style="color:cyan">age</th>
+            <th style="color:cyan">gender</th>
+           
+            <th style="color:cyan">city</th>
+           
+          </tr>
+<%for(let j=0;j<length;j++){%>
+     <tr>
+      <td><%=result1[j].name%></td>
+      <td><%=result1[j].age%></td>
+      
+      <td><%=result1[j].gender%></td>
+      
+      <td><%=result1[j].city%></td>
+    </tr>
+<%}%>
+
+    </table>
+    
+<a href="/getDetails">Update Record</a><br>
+
+<a href="/getDetails">Delete Record</a>
+    </div>
+    <!-- Pagination code-->
+    <div class="pagination">
+        <% for(let i=0;i<page;i++){%>
+                <a href="/records5?offset=<%=i%>"><%=i%></a>
+        <% }%>
+    </div>
+
+    <%- include('footer') %>
