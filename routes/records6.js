@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
 
-router.get('/records3', function(req, res, next) {
+router.post('/records6', function(req, res, next) {
     
 var con = mysql.createConnection({
   host: "localhost",
@@ -18,23 +18,24 @@ con.connect(function(err) {
   }
   
   console.log("Connected!");
-  var sql = "SELECT * FROM customers LIMIT 7";
+  var sql = `SELECT  name FROM customers WHERE name='${req.body.name}'`;
   con.query(sql, function (err, result) {
     if (err) throw err;
+    
+    console.log('result lenngh',result.length);
+    console.log(req.body);
 
-console.log('result lenngh',result.length);
-console.log(req.body);
-if(result.length>0)
-{
+      if(result.length>0)
+    {
     console.log("already exist");
     res.send('Record already exists');
     return;
 }
 else{
-      collection.insertOne(req.body,function(err, result) {
-          if (err) throw err;
-  
-          db.close();
+  const queryParams = [req.body.name, req.body.age, req.body.gender, req.body.city];
+    con.query( "INSERT INTO customers (name, age, gender, city) VALUES (?,?,?,?)", queryParams, function (err, result) {
+        if (err) throw err;;
+
           res.redirect('/');
           return;
       });
